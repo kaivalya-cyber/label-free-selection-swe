@@ -291,7 +291,7 @@ opened. No entry is UNVERIFIED.
 
 **UNVERIFIED:** none.
 
-**Model cards consulted (2026-11-01).** `nvidia/Open-SWE-Traces` names Qwen3.6-27B
+**Model cards consulted (re-checked 2026-11-10; first checked 2026-11-01).** `nvidia/Open-SWE-Traces` names Qwen3.6-27B
 (v1.1) and Qwen3.8-27B (v1.2). Both Qwen cards give 27B for the language model
 and 28B total with the vision encoder.
 <https://huggingface.co/datasets/nvidia/Open-SWE-Traces>,
@@ -326,6 +326,12 @@ listed separately in §2.
   `python notebook_regenerate.py` — exit 0; all six PDFs, six PNGs, four table
   files and `manifest.json` byte-identical to the repo. PDF timestamps are
   omitted, so two consecutive runs hash identically.
+- Reference spot-check (2026-11-10) — all 17 bibliographic entries resolve and
+  match their stated venue or ID, including the two arXiv IDs added this cycle
+  (`2607.02770`, `2606.16038`). The `Qwen/Qwen3.6-27B` and `Qwen/Qwen3.8-27B`
+  cards both state 27B parameters for the language model and 28B total with the
+  vision encoder; the NVIDIA dataset card and `arXiv:2606.16038` agree, and the
+  Nebius card states 67,074 trajectories.
 - Visual inspection of PDF pages 1–9 around the abstract, Introduction,
   Figure 1, Table 1, Table 2, Table 3, the judge section and Limitations; no
   clipped table cells or missing glyphs.
