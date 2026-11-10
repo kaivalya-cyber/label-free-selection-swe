@@ -72,7 +72,12 @@ def save(fig, out_dir: Path, stem: str, manifest: dict) -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
     for ext in ("pdf", "png"):
         path = out_dir / f"{stem}.{ext}"
-        fig.savefig(path, bbox_inches="tight", facecolor="white")
+        if ext == "pdf":
+            # Omit the wall-clock stamp so a rerun reproduces the same bytes.
+            fig.savefig(path, bbox_inches="tight", facecolor="white",
+                        metadata={"CreationDate": None, "ModDate": None})
+        else:
+            fig.savefig(path, bbox_inches="tight", facecolor="white")
         manifest[path.name] = hashlib.sha256(path.read_bytes()).hexdigest()
     plt.close(fig)
 

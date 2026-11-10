@@ -216,7 +216,7 @@ arm and the MDE wording, paid for by trimming Related work and Implications
 | Fig. 5 | Two-panel AUROC forest, chance line at 0.5, n pairs in labels, 95% repo-clustered bootstrap intervals; oriented steps in both panels (0.548 judge frame, 0.560 B2 frame); title says weak (0.51–0.58). |
 | Fig. 6 | Certification counts at 0.05/0.10/0.20, agreement vs cross-fit, NO-COVERAGE hatched, K=8 note. |
 | Tables 1–3 | Rebuilt by `notebook_regenerate.py`; values match §1 and the paper's Markdown tables. Table 1 has B1's one Holm-significant negative arm and B3 "(not blind)"; Table 2 has the post-hoc oriented-steps row; Table 3 caption has the 27B-arm disclosure. |
-| Clean-room test | Fresh clone of the public repo (`build/pub_clone2`, commit 2524ce3, anonymous access) ran `notebook_regenerate.py` with no login, dataset download or model call: six PNGs and four table files byte-identical; the six PDFs differ only in metadata. |
+| Clean-room test | Fresh clone of the public repo (anonymous access) runs `notebook_regenerate.py` with no login, dataset download or model call; every generated file — six PDFs, six PNGs, four tables, `manifest.json` — is byte-identical to the committed copy. |
 | Word count | `scripts/count_paper_words.py` exits 0 at **2,898/2,900** under the strictest rule (official limit 3,000). |
 
 ## 6. Discrepancies and corrections
@@ -323,8 +323,9 @@ listed separately in §2.
   the diff is the single D9.2 source string, all numbers identical.
 - Public clone — `git clone https://github.com/kaivalya-cyber/label-free-selection-audit`
   (anonymous `ls-remote` succeeds with no credential helper), then
-  `python notebook_regenerate.py` — exit 0; six PNGs and four table files
-  byte-identical to the repo; the six PDFs differ only in metadata.
+  `python notebook_regenerate.py` — exit 0; all six PDFs, six PNGs, four table
+  files and `manifest.json` byte-identical to the repo. PDF timestamps are
+  omitted, so two consecutive runs hash identically.
 - Visual inspection of PDF pages 1–9 around the abstract, Introduction,
   Figure 1, Table 1, Table 2, Table 3, the judge section and Limitations; no
   clipped table cells or missing glyphs.
@@ -334,7 +335,7 @@ listed separately in §2.
 <https://github.com/kaivalya-cyber/label-free-selection-audit> — public, no login.
 It holds `paper.md`, `paper.pdf`, `notebook_regenerate.py`, `results/*.json` and
 the scripts behind every table and figure. A fresh clone of that URL ran
-`notebook_regenerate.py` to byte-identical PNGs and tables; the PDFs differ only
-in metadata. No dataset download, model call or credential is needed for the
+`notebook_regenerate.py` to byte-identical PDFs, PNGs, tables and manifest. No
+dataset download, model call or credential is needed for the
 regeneration path, and `out/` and `data/` are not published.
 - `git diff --check` — clean.
