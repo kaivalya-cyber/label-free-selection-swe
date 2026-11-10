@@ -325,7 +325,10 @@ listed separately in §2.
   (anonymous `ls-remote` succeeds with no credential helper), then
   `python notebook_regenerate.py` — exit 0; all six PDFs, six PNGs, four table
   files and `manifest.json` byte-identical to the repo. PDF timestamps are
-  omitted, so two consecutive runs hash identically.
+  omitted, so two consecutive runs hash identically. That run used Python
+  3.12.10 and matplotlib 3.11.2 (now pinned); Python 3.9.6 with matplotlib
+  3.9.4 also exits 0 and reproduces every table and value, but re-renders the
+  figures because text metrics changed between matplotlib releases.
 - Reference spot-check (2026-11-10) — all 17 bibliographic entries resolve and
   match their stated venue or ID, including the two arXiv IDs added this cycle
   (`2607.02770`, `2606.16038`). The `Qwen/Qwen3.6-27B` and `Qwen/Qwen3.8-27B`
@@ -341,7 +344,8 @@ listed separately in §2.
 <https://github.com/kaivalya-cyber/label-free-selection-audit> — public, no login.
 It holds `paper.md`, `paper.pdf`, `notebook_regenerate.py`, `results/*.json` and
 the scripts behind every table and figure. A fresh clone of that URL ran
-`notebook_regenerate.py` to byte-identical PDFs, PNGs, tables and manifest. No
-dataset download, model call or credential is needed for the
+`notebook_regenerate.py` to byte-identical PDFs, PNGs, tables and manifest under
+Python 3.12.10 with matplotlib 3.11.2, the version pinned in `requirements.txt`.
+No dataset download, model call or credential is needed for the
 regeneration path, and `out/` and `data/` are not published.
 - `git diff --check` — clean.
